@@ -21,6 +21,23 @@ enum class Planet {
 	Defence
 };
 
-Choice ConvertStringToChoice(const std::string input);
+enum class StoreItem {
+	Flashlight,
+	Shovel,
+	ProFlashlight,
+	Teleporter,
+	InverseTeleporter,
+	Backpack,
+	HydraulicsMk2
+};
+
+enum class MoonWeather {
+	Clear = 0,
+	Flooded,
+	Eclipsed,
+	Stormy
+};
+
+Choice ConvertStringToChoice(std::string input);
 
 #endif // CHOICE_H
