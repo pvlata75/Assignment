@@ -4,6 +4,7 @@
 #include <string>
 #include "Choice.h" 
 #include "Choice.cpp"
+#include "ItemManager.h"
 
 void Game::Run()
 {
@@ -35,7 +36,7 @@ bool Game::HandleCommand() {
     std::cout << ">";
     std::cin >> x;
     std::cout << "\n" << x;
-
+    ItemManager item;
     auto choice = ConvertStringToChoice(x);
 
     switch (choice) {
