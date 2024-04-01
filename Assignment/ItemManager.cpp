@@ -2,31 +2,20 @@
 #include <iostream>
 #include "Choice.h"
 
-ItemManager::ItemManager()
+void ItemManager::RegisterItem(StoreItem item, std::string name, int price)
 {
+	m_items[item] = std::make_pair(name, price);
 }
 
-ItemManager::~ItemManager()
-{
-	for (Item* item : items) {
-		delete item;
-	}
-}
-
-void ItemManager::registerItem(Item* item)
-{
-	items.push_back(item);
-}
-
-void ItemManager::displayInventory()
+void ItemManager::DisplayInventory()
 {
 	std::cout << "\n";
-	for (Item* item : items) {
-		std::cout << "* " << item->getName() << "\n";
+	for (auto [item, data] : m_items) {
+		std::cout << "* " << data.first << "\n";
 	}
 }
 
-void ItemManager::displayStore()
+void ItemManager::DisplayStore()
 {
 	std::cout << "\nWelcome to the Corporation store.\nUse the word BUY on any item.\n";
 	std::cout << "---------------------------------------------\n";
@@ -39,82 +28,23 @@ void ItemManager::displayStore()
 	std::cout << "\n* Hydaulics-Mk2 // Price : $1000\n";
 }
 
-void ItemManager::buyItem(StoreItem item, int& m_playerBalance)
+void ItemManager::BuyItem(StoreItem item, int& m_playerBalance)
 {
-	int price = getItemPrice(item);
-	if (price == -1) {
-		std::cout << "\nInvalid item selected.\n";
-		return;
-	}
+	int price = m_items[item].second;
 
-	if (m_playerBalance >= price) {
-		std::cout << "\nSuccessfully bought " << getItemName(item) << "\n";
-		m_playerBalance -= price;
-		std::cout << "Your balance is now: $" << m_playerBalance << "\n";
+	if (price != -1) {
+		if (m_playerBalance >= price) {
+			std::cout << "\nSuccessfully bought " << m_items[item].first << "\n";
+			m_playerBalance -= price;
+			m_items[item].second = -1;
+			std::cout << "Your balance is now: $" << m_playerBalance << "\n";
+		}
+		else {
+			std::cout << "\nYou don't have enough money to buy this\n";
+		}
 	}
 	else {
-		std::cout << "\nYou don't have enough money to buy this\n";
+		std::cout << "You already own a " << m_items[item].first << ".\n";
 	}
-}
 
-Item::Item(std::string& name, int price) : name(name), price(price)
-{
-}
-
-std::string Item::getName()
-{
-	return name;
-}
-
-int Item::getPrice()
-{
-	return price;
-}
-
-std::string ItemManager::getItemName(StoreItem item) {
-	switch (item) {
-	case StoreItem::Flashlight:
-		return "Flashlight";
-	case StoreItem::Shovel:
-		return "Shovel";
-	case StoreItem::ProFlashlight:
-		return "ProFlashlight";
-	case StoreItem::Teleporter:
-		return "Teleporter";
-	case StoreItem::InverseTeleporter:
-		return "InverseTeleporter";
-	case StoreItem::Backpack:
-		return "Backpack";
-	case StoreItem::HydraulicsMk2:
-		return "HydraulicsMk2";
-	default:
-		return "Unknown Item";
-	}
-}
-
-int ItemManager::getPlayerBalance()
-{
-	// Initialize or retrieve player balance
-	return m_playerBalance = 5000;
-}
-
-int ItemManager::getItemPrice(StoreItem item) {
-	switch (item) {
-	case StoreItem::Flashlight:
-		return 60;
-	case StoreItem::Shovel:
-		return 100;
-	case StoreItem::ProFlashlight:
-		return 200;
-	case StoreItem::Teleporter:
-		return 300;
-	case StoreItem::InverseTeleporter:
-		return 400;
-	case StoreItem::Backpack:
-		return 500;
-	case StoreItem::HydraulicsMk2:
-		return 1000;
-	default:
-		return -1; // Invalid item, return -1
-	}
 }

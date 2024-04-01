@@ -3,46 +3,22 @@
 
 #include <vector>
 #include <string>
-#include "Choice.h"
-
-class Item;
+#include "StoreItem.h"
+#include <map>
 
 class ItemManager {
 private:
-    std::vector<Item*> items; 
-    int m_playerBalance;
+    std::map<StoreItem, std::pair<std::string, int>> m_items = {};
 
 public:
-    ItemManager();
 
-    ~ItemManager();
+    void RegisterItem(StoreItem item, std::string name, int price);
 
-    void registerItem(Item* item);
+    void DisplayInventory();
 
-    void displayInventory();
-
-    void displayStore();
-
-    std::string getItemName(StoreItem item);
+    void DisplayStore();
     
-    int getPlayerBalance();
-
-    int getItemPrice(StoreItem item);
-
-    void buyItem(StoreItem item, int& m_playerBalance);
-};
-
-class Item {
-private:
-    std::string name;
-    int price;
-
-public:
-    Item(std::string& name, int price);
-
-    std::string getName();
-
-    int getPrice();
+    void BuyItem(StoreItem item, int& m_playerBalance);
 };
 
 #endif // ITEM_MANAGER_H
