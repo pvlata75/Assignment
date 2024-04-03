@@ -3,7 +3,7 @@
 #
 
 # Add source to this project's executable.
-add_executable (Assignment "main.cpp" "Choice.h" "Choice.cpp" "ItemManager.h" "ItemManager.cpp" "Util.h" "Util.cpp" "Game.h" "Game.cpp" "StoreItem.h" "StoreItem.cpp" "GameTitle.h")
+add_executable (Assignment "main.cpp" "Choice.h" "Choice.cpp" "ItemManager.h" "ItemManager.cpp" "Util.h" "Util.cpp" "Game.h" "Game.cpp" "StoreItem.h" "StoreItem.cpp" "GameTitle.h" "AbstractMoon.h" "AbstractMoon.cpp" "MoonManager.cpp" "MoonManager.h")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET Assignment PROPERTY CXX_STANDARD 20)

@@ -19,13 +19,6 @@ enum class Planet {
     Defence
 };
 
-enum class MoonWeather {
-    Clear = 0,
-    Flooded,
-    Eclipsed,
-    Stormy
-};
-
 Choice ConvertStringToChoice(std::string input);
 
 #endif // CHOICE_H
