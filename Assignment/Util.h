@@ -8,7 +8,7 @@
 #include <vector>
 
 
-namespace util
+namespace Util
 {
     /// \brief Transforms the specified string instance so that all characters are lowercase
     /// \param str String to be lowercased

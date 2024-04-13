@@ -3,7 +3,7 @@
 
 StoreItem ConvertStringToStoreItem(std::string input)
 {
-    util::lower(input);
+    Util::lower(input);
     if (input == "flashlight" || input == "flash")
         return StoreItem::Flashlight;
     else if (input == "proflashlight" || input == "pro")

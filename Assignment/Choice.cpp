@@ -6,7 +6,7 @@
 
 Choice ConvertStringToChoice(std::string input)
 {
-    util::lower(input);
+    Util::lower(input);
 
     if (input == "moons")
         return Choice::Moons;

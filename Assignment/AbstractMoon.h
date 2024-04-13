@@ -1,12 +1,16 @@
 #ifndef ABSTRACTMOON_H
+#define ABSTRACTMOON_H
+
 #include <string>
+
+
 
 enum class MoonWeather {
     Clear = 0,
     Flooded,
-    Eclisped,
+    Eclipsed,
     Stormy,
-    Count 
+    Count
 };
 
 class Game;
@@ -15,19 +19,34 @@ class AbstractMoon {
 protected:
     std::string moonName;
     MoonWeather weather;
+    int cost;
+    int minScrap;
+    int maxScrap;
+    double explorerBaseSurvival;
+    const int baseCargo = 5;
 
 public:
 
-    const std::string name();
+    AbstractMoon(const std::string name, int cost, int minScrap, int maxScrap, double explorerBaseSurvival);
+    virtual ~AbstractMoon();
 
-    virtual void onDayBegin(Game g);
+    std::string GetName() const;
 
-    virtual void sellCargo(Game g, int amount);
+    int GetRandomScrap(int min, int max);
 
-    virtual void sendEmployees(Game g, int count);
+    double GetRandomChance();
 
-    void printWelcomeMessage();
+    virtual void OnDayBegin(Game g);
+
+    virtual void SellCargo(Game g, int amount);
+    
+    virtual void SendEmployee(Game g, int numExplorers);
+    
+    std::string GetWeather();
+
+    int GetCost() const;
+
 };
 
 
-#endif // !ABSTRACTMOON_H
+#endif // ABSTRACTMOON_H

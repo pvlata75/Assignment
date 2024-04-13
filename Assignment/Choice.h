@@ -11,13 +11,6 @@ enum class Choice {
     Unknown
 };
 
-enum class Planet {
-    Corporation,
-    Prototyping,
-    Insurance,
-    Pledge,
-    Defence
-};
 
 Choice ConvertStringToChoice(std::string input);
 

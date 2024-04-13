@@ -7,12 +7,12 @@
 #include <algorithm>
 #include <stdexcept>
 
-void util::lower(std::string &str)
+void Util::lower(std::string &str)
 {
     std::transform(str.begin(), str.end(), str.begin(), [](const char c) { return std::tolower(c); });
 }
 
-int util::parsePositiveInt(const std::string &str)
+int Util::parsePositiveInt(const std::string &str)
 {
     try {
         return std::stoi(str);
@@ -23,7 +23,7 @@ int util::parsePositiveInt(const std::string &str)
     return -1;
 }
 
-void util::splitArguments(std::string &line, std::vector<std::string> &args)
+void Util::splitArguments(std::string &line, std::vector<std::string> &args)
 {
     const auto firstArg = line.find(' ');
     auto separator = firstArg;

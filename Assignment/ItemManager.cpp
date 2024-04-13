@@ -1,14 +1,18 @@
 #include "ItemManager.h"
 #include <iostream>
 #include "Choice.h"
+#include "Game.h"
 
-void ItemManager::RegisterItem(StoreItem item, std::string name, int price)
+void ItemManager::RegisterItem(StoreItem item, std::string GetName, int price)
 {
-	m_items[item] = std::make_pair(name, price);
+	m_items[item] = std::make_pair(GetName, price);
 }
+
 
 void ItemManager::DisplayInventory()
 {
+	std::cout << "\nThe following items are available.\n";
+	std::cout << "---------------------------------------------\n";
 	std::cout << "\n";
 	for (auto [item, data] : m_items) {
 		std::cout << "* " << data.first << "\n";
@@ -28,7 +32,7 @@ void ItemManager::DisplayStore()
 	std::cout << "\n* Hydaulics-Mk2 // Price : $1000\n";
 }
 
-void ItemManager::BuyItem(StoreItem item, int& m_playerBalance)
+void ItemManager::BuyItem(StoreItem item, int m_playerBalance)
 {
 	int price = m_items[item].second;
 

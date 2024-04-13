@@ -4,17 +4,23 @@
 #include <vector>
 #include <string>
 #include "AbstractMoon.h"
+#include "Game.h"  
+#include "StoreMoon.h"
+#include "Moon.h"
+
 
 class MoonManager {
 private:
-    std::vector<AbstractMoon*> moons;
+    std::map<StoreMoon, std::unique_ptr<Moon>> m_moons;
 
 public:
-    void registerMoon(AbstractMoon* moon);
+    void RegisterMoon(StoreMoon moonId, std::string name, int cost, int minScrap, int maxScrap, double explorerBaseSurvival);
 
-    void printMoons();
+    void PrintMoons();
 
-    void routeToMoon(int moonIndex);
+    AbstractMoon* GetMoon(const std::string moonName);
+
+    void RouteToMoon(Game g, const std::string moonName);
 };
 
 #endif // MOONMANAGER_H
