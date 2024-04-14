@@ -28,7 +28,6 @@ protected:
 public:
 
     AbstractMoon(const std::string name, int cost, int minScrap, int maxScrap, double explorerBaseSurvival);
-    virtual ~AbstractMoon();
 
     std::string GetName() const;
 

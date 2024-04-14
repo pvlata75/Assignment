@@ -121,7 +121,7 @@ void Game::Leave()
 {
     m_currentPhase = Phase::Orbiting;
    
-    for (auto& moon : m_moonManager.GetMoon(m_currentMoonName)) {
+    for (auto& moon : m_moonManager.GetMoon()) {
         moon->OnDayBegin(*this);
     }
     

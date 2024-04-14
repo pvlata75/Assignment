@@ -11,7 +11,7 @@
 
 class MoonManager {
 private:
-    std::map<StoreMoon, std::unique_ptr<Moon>> m_moons;
+    std::map<StoreMoon, std::unique_ptr<Moon>> m_moons = {};
 
 public:
     void RegisterMoon(StoreMoon moonId, std::string name, int cost, int minScrap, int maxScrap, double explorerBaseSurvival);

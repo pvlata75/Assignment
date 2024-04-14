@@ -15,10 +15,6 @@ AbstractMoon::AbstractMoon(const std::string name, int cost, int minScrap, int m
     weather = static_cast<MoonWeather>(dist(gen));
 }
 
-AbstractMoon::~AbstractMoon()
-{
-}
-
 std::string AbstractMoon::GetName() const
 {
 	return moonName;
